@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kheti Chain - Crop Info Summary & Agreement</title>
+  <link rel="stylesheet" href="all-data.css" />
+  <style>
+    /* Keep your existing all-data.css styles here or in external file */
+
+    /* Modal background overlay */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
+
+    /* Modal content box */
+    .modal {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px 36px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 10px 40px rgba(34, 77, 25, 0.4);
+      position: relative;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .modal h3 {
+      margin-top: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #224d19;
+      margin-bottom: 22px;
+    }
+
+    .modal p {
+      font-size: 1.05rem;
+      line-height: 1.5;
+      color: #344d14;
+      margin-bottom: 18px;
+    }
+
+    /* Signature fields container */
+    .signatures {
+      display: flex;
+      justify-content: space-around;
+      gap: 40px;
+      margin-top: 28px;
+    }
+
+    .signature-field {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1rem;
+      color: #224d19;
+    }
+
+    textarea.signature-box {
+      width: 220px;
+      height: 120px;
+      border: 2px solid #a5d57d;
+      border-radius: 14px;
+      resize: none;
+      padding: 10px;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      margin-top: 8px;
+      background: #e9f7d1;
+      box-shadow: inset 0 0 8px rgb(163 213 113 / 0.4);
+    }
+
+    /* Modal close button */
+    .close-btn {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      font-size: 1.8rem;
+      color: #8aa435;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      font-weight: 700;
+      line-height: 1;
+      transition: color 0.23s ease;
+    }
+
+    .close-btn:hover {
+      color: #4d7410;
+    }
+
+    /* Agreement button styling - reuse or adapt your button style */
+    .agreement-btn {
+      background-color: #3b6615;
+      color: #e8f6c8;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 18px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgb(53 109 15 / 0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      margin-top: 18px;
+      display: block;
+      margin-left: auto;
+    }
+
+    .agreement-btn:hover {
+      background-color: #81b41b;
+      box-shadow: 0 12px 38px rgb(129 180 27 / 0.85);
+      color: #2a3d02;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="site-title">Kheti Chain - Crop Info Summary</h1>
+  </header>
+
+  <main class="container">
+    <!-- Farmer Data Section -->
+    <section class="data-section">
+      <h2>Farmer Submitted Crop Details</h2>
+      <div class="data-card">
+        <img src="wheat_crop.jpg" alt="Wheat Crop" class="crop-photo" />
+        <p><strong>Crop Type:</strong> Wheat</p>
+        <p><strong>Amount:</strong> 1500 kg</p>
+        <p><strong>Quality:</strong> Premium</p>
+        <p><strong>Harvest Date:</strong> 2025-10-15</p>
+        <p><strong>Irrigation:</strong> Watered 7 times</p>
+      </div>
+    </section>
+
+    <!-- Retailer Data Section -->
+    <section class="data-section">
+      <h2>Retailer Pricing and Contacts</h2>
+      <div class="data-card">
+        <p><strong>Crop:</strong> Wheat</p>
+        <p><strong>Price:</strong> ₹25 per kg</p>
+        <p><strong>Contact Farmer:</strong> Ajay Kumar (9876543210)</p>
+        <a href="tel:9876543210" class="call-btn">Call Farmer</a>
+      </div>
+    </section>
+
+    <!-- Consumer Data Section -->
+    <section class="data-section">
+      <h2>Consumer Purchase Prices</h2>
+      <div class="data-card">
+        <p><strong>Crop:</strong> Wheat</p>
+        <p><strong>Price Paid:</strong> ₹27 per kg</p>
+      </div>
+    </section>
+
+    <!-- Agreement button -->
+    <button class="agreement-btn" onclick="openAgreement()">Agreement</button>
+  </main>
+
+  <!-- Modal for Agreement -->
+  <div class="modal-overlay" id="agreementModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="agreementTitle">
+      <button class="close-btn" aria-label="Close Agreement" onclick="closeAgreement()">&times;</button>
+      <h3 id="agreementTitle">Sales Agreement</h3>
+      <p>I am the farmer <strong>[Farmer Name]</strong> selling my crop amount of <strong>[Amount]</strong> with quality <strong>[Quality]</strong> and other details as below:</p>
+      <ul>
+        <li>Crop Type: Wheat</li>
+        <li>Amount: 1500 kg</li>
+        <li>Quality: Premium</li>
+        <li>Harvest Date: 2025-10-15</li>
+        <li>Irrigation: Watered 7 times</li>
+        <li>Price set by retailer: ₹25 per kg</li>
+      </ul>
+      <p>This agreement is agreed and signed digitally by both the farmer and retailer.</p>
+
+      <div class="signatures">
+        <div class="signature-field">
+          <label for="farmerSignature"><strong>Farmer's Signature</strong></label>
+          <textarea id="farmerSignature" class="signature-box" placeholder="Farmer's digital signature here"></textarea>
+        </div>
+        <div class="signature-field">
+          <label for="retailerSignature"><strong>Retailer's Signature</strong></label>
+          <textarea id="retailerSignature" class="signature-box" placeholder="Retailer's digital signature here"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openAgreement() {
+      document.getElementById('agreementModal').style.display = 'flex';
+    }
+    function closeAgreement() {
+      document.getElementById('agreementModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

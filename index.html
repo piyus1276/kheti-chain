@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kheti Chain - Welcome</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <header>
+    <h1 class="site-title">Kheti Chain</h1>
+    <p class="site-info">Connecting farmers, retailers, and consumers to build a transparent agricultural marketplace.</p>
+  </header>
+
+  <section class="crop-photos">
+  <img src="https://eos.com/wp-content/uploads/2023/05/wheat-crop-field.jpg.webp" alt="Wheat Crop Field" />
+  <img src="https://media.istockphoto.com/id/1399619196/photo/young-green-wheat-in-the-field.jpg?s=612x612&w=0&k=20&c=6bkTFfyrzZ2avzyVz2HaqL5duSPMOtk52XB8EgXSdaw=" alt="Young Green Wheat" />
+</section>
+
+
+  <main class="main-container">
+    <div class="user-choice-box">
+      <button type="button" class="user-btn" onclick="showForm('farmer')">Farmer</button>
+      <button type="button" class="user-btn" onclick="showForm('retailer')">Retailer</button>
+      <button type="button" class="user-btn" onclick="showForm('consumer')">Consumer</button>
+    </div>
+
+    <form id="loginForm" action="#"  enctype="multipart/form-data" onsubmit="handleLogin(event)">
+      <!-- Retailer license fields -->
+<div id="retailerFields" style="display:none;">
+  <input type="text" name="licenseNumber" placeholder="Retailer License Number" />
+  <label for="licensePhoto">Upload License Photo:</label>
+  <input type="file" id="licensePhoto" name="licensePhoto" accept="image/*" />
+</div>
+
+      <h2 id="formTitle">Please select user type above</h2>
+      <input type="text" name="name" placeholder="Name" required />
+      <input type="tel" name="number" placeholder="Mobile Number" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <select name="gender" required>
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <input type="submit" value="Login / Register" />
+    </form>
+  </main>
+
+  <script>
+    function showForm(type) {
+  const formTitle = document.getElementById("formTitle");
+  formTitle.innerText = type.charAt(0).toUpperCase() + type.slice(1) + " Login / Registration";
+
+  const retailerFields = document.getElementById("retailerFields");
+  if (type === "retailer") {
+    retailerFields.style.display = "block";
+    retailerFields.querySelector('input[name="licenseNumber"]').required = true;
+    retailerFields.querySelector('input[name="licensePhoto"]').required = true;
+  } else {
+    retailerFields.style.display = "none";
+    retailerFields.querySelector('input[name="licenseNumber"]').required = false;
+    retailerFields.querySelector('input[name="licensePhoto"]').required = false;
+  }
+
+  const loginButton = document.querySelector('input[type="submit"]');
+  if (loginButton) {
+    loginButton.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  }
+}
+
+
+    function handleLogin(e) {
+      e.preventDefault();
+      window.location.href = 'dashboard.html';
+    }
+  </script>
+</body>
+</html>

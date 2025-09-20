@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400|Fira+Sans:700&display=swap');
+body.dashboard-body {
+  background: linear-gradient(135deg, #d9f99d 0%, #abffb8 100%);
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 38px;
+}
+.switch-user-bar {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 24px;
+}
+.switch-user-bar button {
+  background: #bef547;
+  border: none;
+  border-radius: 10px;
+  color: #1f201f;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  padding: 11px 32px;
+  cursor: pointer;
+  transition: background 0.19s;
+}
+.switch-user-bar button:hover {
+  background: #1f201f;
+  color: #edffe4;
+}
+.dashboard-card {
+  background: #fff;
+  border-radius: 21px;
+  box-shadow: 0 7px 42px rgba(0,64,61,0.16);
+  padding: 32px 37px;
+  max-width: 600px;
+  width: 100%;
+  margin-bottom: 37px;
+  transition: box-shadow 0.3s;
+}
+.dashboard-card h2 {
+  color: #160000;
+  font-family: 'Fira Sans', sans-serif;
+  letter-spacing: 0.7px;
+  margin-bottom: 18px;
+}
+#farmer-crop-form label,
+.add-price-form,
+.consumer-price-form {
+  display: block;
+  margin-bottom: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: #1a2b04;
+}
+#farmer-crop-form input,
+#farmer-crop-form select,
+.add-price-form input,
+.consumer-price-form input {
+  background: #e5ffe8;
+  border: 2px solid #bef547;
+  border-radius: 9px;
+  padding: 10px 12px;
+  margin-top: 6px;
+  margin-bottom: 5px;
+  font-size: 1em;
+  width: 95%;
+  font-family: 'Roboto', sans-serif;
+}
+#farmer-crop-form input[type="file"] {
+  background: none;
+  border: none;
+}
+#farmer-crop-form input[type="submit"],
+.add-price-form button,
+.consumer-price-form button {
+  background: #22331a;
+  color: #efffec;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 11px;
+  border: none;
+  font-weight: bold;
+  font-size: 1em;
+  margin-top: 8px;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: background 0.17s;
+}
+#farmer-crop-form input[type="submit"]:hover,
+.add-price-form button:hover,
+.consumer-price-form button:hover {
+  background: #bef547;
+  color: #1d2130;
+}
+.crop-list {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+.crop-box {
+  border: 2.8px solid #bef547;
+  background: #ecfde6;
+  border-radius: 15px;
+  padding: 23px 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 12px 0 rgba(51,90,5,0.09);
+}
+.crop-box h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.18em;
+  color: #01210c;
+}
+.crop-image {
+  display: block;
+  width: 95px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 11px;
+  border: 1.5px solid #b0fa81;
+  margin-top: 9px;
+  margin-bottom: 10px;
+}
+.call-btn {
+  background: #1f301a;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  padding: 6px 13px;
+  font-size: 1em;
+  margin-left: 18px;
+  transition: background 0.14s;
+}
+.call-btn:hover {
+  background: #d9f99d;
+  color: #160000;
+}
+.hidden { display: none; }

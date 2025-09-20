@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Agro Portal Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="dashboard-body">
+  <!-- User type switch for demo -->
+  <div class="switch-user-bar">
+    <button onclick="showSection('farmer')">Farmer</button>
+    <button onclick="showSection('retailer')">Retailer</button>
+    <button onclick="showSection('consumer')">Consumer</button>
+  </div>
+  <!-- Farmer form -->
+  <section id="farmer-section" class="dashboard-card">
+    <h2>Submit Crop Details</h2>
+    <form id="farmer-crop-form" enctype="multipart/form-data"  onsubmit="return handleSubmit(event)">
+
+      <label>Crop Type
+        <input type="text" name="crop_type" required>
+      </label>
+      <label>Amount of Crop (kg/tonne)
+        <input type="number" name="amount" required>
+      </label>
+      <label>Quality of Crop
+        <select name="quality" required>
+          <option value="premium">Premium</option>
+          <option value="good">Good</option>
+          <option value="average">Average</option>
+        </select>
+      </label>
+      <label>Photos of Crop
+        <input type="file" name="photos" multiple accept="image/*" required>
+      </label>
+      <label>Harvesting Time (Date)
+        <input type="date" name="harvest_time" required>
+      </label>
+      <label>Irrigation Details (times watered)
+        <input type="number" name="irrigation" required>
+      </label>
+      <input type="submit" value="Submit Crop">
+    </form>
+  </section>
+
+  <!-- Retailer view -->
+  <section id="retailer-section" class="dashboard-card hidden">
+    <h2>Available Crops</h2>
+    <div class="crop-list">
+      <!-- Crop boxes, to be dynamically loaded in real app -->
+      <div class="crop-box">
+        <h3>Wheat</h3>
+        <p>Amount: 1000 kg</p>
+        <p>Quality: Premium</p>
+        <p>Harvest: 2025-10-05</p>
+        <p>Irrigation: 8 times</p>
+        <img src="sample_crop.jpg" alt="crop photo" class="crop-image">
+        <p>Farmer: Ajay (9876543210) <a href="tel:9876543210" class="call-btn">Call</a></p>
+        <form class="add-price-form" onsubmit="return handleSubmit(event)">
+          <input type="number" placeholder="Add price per kg" required>
+          <button type="submit">Set Price</button>
+        </form>
+      </div>
+      <!-- More crop-box sections -->
+    </div>
+  </section>
+
+  <!-- Consumer view -->
+  <section id="consumer-section" class="dashboard-card hidden">
+    <h2>Report Purchase Price</h2>
+    <div class="crop-list">
+      <div class="crop-box">
+        <h3>Wheat</h3>
+        <p>Amount: 1000 kg</p>
+        <p>Quality: Premium</p>
+        <form class="consumer-price-form" onsubmit="return handleSubmit(event)">
+          <input type="number" placeholder="Price paid per kg" required>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <!-- More crop-box sections -->
+    </div>
+  </section>
+
+  <script>
+    function showSection(role) {
+      document.getElementById('farmer-section').classList.add('hidden');
+      document.getElementById('retailer-section').classList.add('hidden');
+      document.getElementById('consumer-section').classList.add('hidden');
+      document.getElementById(role + '-section').classList.remove('hidden');
+    }
+    // Default to farmer for preview
+    showSection('farmer');
+  </script>
+  <script>
+function handleSubmit(e) {
+  e.preventDefault(); // prevent reload
+  // optionally validate or save data here
+  window.location.href = 'all-data.html'; // redirect to 3rd page
+  return false;
+}
+</script>
+
+</body>
+</html>
